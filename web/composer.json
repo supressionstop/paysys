@@ -1,0 +1,9 @@
+{
+    "require": {
+        "robmorgan/phinx": "^0.5.1",
+        "curl/curl": "^2.0",
+        "slim/slim-skeleton": "*",
+        "fzaninotto/faker": "^1.8",
+        "netresearch/jsonmapper": "^1.4"
+    }
+}

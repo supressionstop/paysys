@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  php-fpm:
+    container_name: paysys_php-fpm
+    #image: php:7.0.21-fpm-alpine
+    build: 
+      context: ./dockerfiles
+      dockerfile: Dockerfile-php-fpm
+    volumes:
+      - "./web/public:/usr/share/nginx/html"
+      - "./web:/usr/share/nginx/web"
+      - "./data:/usr/share/nginx/web/data"
+      
+    ports:
+      - "9000:9000"
+    #command: docker-php-ext-install pdo_mysql
+    
+  web-server:
+    container_name: paysys_nginx
+    image: nginx:alpine
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./nginx/sites:/etc/nginx/conf.d"
+      - "./web:/usr/share/nginx/web"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php-fpm
+
+  database:
+    container_name: paysys_database
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Queen12Olga90
+      - MYSQL_HOST=localhost
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=User1827Inga02
+      - MYSQL_DATABASE=payment_system
+    volumes:
+      - "./data/db/mysql:/var/lib/mysql"
+    expose:
+      - "3306"
+
+  composer:
+     container_name: paysys_composer
+     image: composer
+     command: install
+     volumes:
+      - "./web:/app"
+
+  phpmyadmin:
+    container_name: paysys_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+     - PMA_ARBITRARY=1
+     - PMA_HOST=database
+     - PMA_PORT=3306
+    restart: always
+    ports:
+     - "8080:80"
+    dns:
+     - "8.8.8.8"
