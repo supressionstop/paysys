@@ -5,21 +5,23 @@ https://github.com/supressionstop/paysys
 Для развертывания быстрее всего предоставить локально работающую папку:
 https://drive.google.com/open?id=1h_St7Amxz7Oa5TiHKtAh4LNeILqNXjuO
 
-Для запуска
+## Для запуска
 1. Распаковать
 2. В папке запустить docker-compose up
 
-Будут развернуты следующие контейнеры
+## Будут развернуты следующие контейнеры
 1. PHP-FPM
 2. Nginx
 3. MySQL
 4. Phpmyadmin
 
-Для работы используются следующие порты
+## Для работы используются следующие порты
 1. 80 - для работы API
 2. 8080 - для работы PHPMyAdmin
 
-Структура папок
+## Структура папок
+
+```
 ├── data
 │   └── db                            
 │       ├── dumps                     - Бекапы
@@ -34,19 +36,20 @@ https://drive.google.com/open?id=1h_St7Amxz7Oa5TiHKtAh4LNeILqNXjuO
     ├── public                        - api.php
     ├── src                           - Код
         ├── entities                  - Сущности
-        └── providers                 - Провайдеры для связи с БД и Depkasa
-        
- 
-Используемые библиотеки
+        └── providers                 - Провайдеры для связи с БД и Depkasa        
+```
+## Используемые библиотеки
 1. Slim framework - для работы API
 2. Phinx - для миграций
 
-Настройки
+## Настройки
 Хранятся в web/config/config.ini
 Для работы Callback-ов нужно поменять callback_url на адрес, доступный для запросов через Интернет, например:
+```
 callback_url = "http://121.11.12.13/api/callback/payment_system"
+```
 
-Endpoints
+## Endpoints
 Доступны три эндпойнта API
 1. /api/payment - создание запроса на платеж
 2. /api/callback/payment_system - для callback-ов
