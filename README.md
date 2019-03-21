@@ -51,9 +51,9 @@ callback_url = "http://121.11.12.13/api/callback/payment_system"
 
 ## Endpoints
 Доступны три эндпойнта API
-1. /api/payment - создание запроса на платеж
-2. /api/callback/payment_system - для callback-ов
-3. /api/payment - проверка статуса платежа
+1. POST /api/payment - создание запроса на платеж
+2. POST /api/callback/payment_system - для callback-ов
+3. GET  /api/payment - проверка статуса платежа
 
 Для проверки работы можно использовать Postman, подключив коллекцию по ссылке:
 https://www.getpostman.com/collections/e7b916e6ed98b4c5e2e0
