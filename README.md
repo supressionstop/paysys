@@ -1,6 +1,4 @@
 # paysys
-Доброго утра, API готово, вот код на Гите:
-https://github.com/supressionstop/paysys
 
 Для развертывания быстрее всего предоставить локально работающую папку:
 https://drive.google.com/open?id=1h_St7Amxz7Oa5TiHKtAh4LNeILqNXjuO
